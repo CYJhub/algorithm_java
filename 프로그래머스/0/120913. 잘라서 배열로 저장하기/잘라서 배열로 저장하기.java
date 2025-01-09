@@ -1,7 +1,4 @@
 // 문자열을 for 문을 이용해 하나씩 잘라서 n개씩 묶은 다음에 문자열 배열에 저장한다.
-// 만약 my_str = 10 n=3 3,3,3,1 이므로 4개
-// 만약 my_str = 12 n=3 3,3,3,3 이므로 4개
-// cnt = (my_str +n-1)/n 10+3-1 / 3 = 4 12+3-1/3 4 --> 이걸 생각하기 힘들었음
 
 class Solution {
     public String[] solution(String my_str, int n) {
