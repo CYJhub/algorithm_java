@@ -3,7 +3,7 @@
 // 배열로 하면 [293, 395, 0, 0] 이렇게 끝에 0이 생긴다.
 import java.util.*;
 
-class Solution {
+class 배열의원소삭제하기 {
     public int[] solution(int[] arr, int[] delete_list) {
         // 배열의 길이는 arr보다 커질 수 없으므로, 크기를 arr과 같이 선언
         //int[] answer = new int[arr.length];

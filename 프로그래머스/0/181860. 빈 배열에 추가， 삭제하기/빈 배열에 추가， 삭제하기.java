@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-class Solution {
+class 빈배열에추가삭제하기 {
     public int[] solution(int[] arr, boolean[] flag) {
         List<Integer> result = new ArrayList<>();
         for(int i=0;i<arr.length;i++){ // arr과 flag 배열의 길이가 같음

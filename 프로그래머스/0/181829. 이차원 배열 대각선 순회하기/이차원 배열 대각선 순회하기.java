@@ -1,4 +1,4 @@
-class Solution {
+class 이차원배열대각선순회하기 {
     public int solution(int[][] board, int k) {
         int answer = 0;
         int col_len = board[0].length; 

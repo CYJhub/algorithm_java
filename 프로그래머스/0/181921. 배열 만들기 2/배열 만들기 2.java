@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-class Solution {
+class 배열만들기2 {
     public int[] solution(int l, int r) {
         
         List<Integer> result = new ArrayList<>();

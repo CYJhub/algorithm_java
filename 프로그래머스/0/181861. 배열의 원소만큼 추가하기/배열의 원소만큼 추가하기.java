@@ -1,4 +1,4 @@
-class Solution {
+class 배열의원소만큼추가하기 {
     public int[] solution(int[] arr) {
         int [] answer;
         int sum =0;

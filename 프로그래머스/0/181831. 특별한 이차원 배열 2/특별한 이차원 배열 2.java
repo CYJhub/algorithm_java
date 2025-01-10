@@ -1,4 +1,4 @@
-class Solution {
+class 특별한이차원배열2 {
     public int solution(int[][] arr) {
         // 대칭 행렬인지 검사
         int len = arr[0].length; // arr의 길이 

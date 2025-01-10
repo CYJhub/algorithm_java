@@ -1,4 +1,4 @@
-class Solution {
+class 특별한이차원배열1 {
     public int[][] solution(int n) {
         int[][] answer = new int[n][n];
         for (int i=1;i<=n;i++){

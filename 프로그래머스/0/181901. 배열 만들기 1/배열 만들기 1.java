@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Solution {
+class 배열만들기 {
     public int[] solution(int n, int k) {
         int[] answer = {};
         List<Integer> result = new ArrayList<>();
