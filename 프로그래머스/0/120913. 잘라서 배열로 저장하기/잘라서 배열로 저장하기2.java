@@ -16,13 +16,16 @@ class Solution {
         String temp="";
         
         for(int i=0;i<len;i+=n){
-            if(i+n >= len){
-                temp = my_str.substring(i,len);
-            }
-            else{
-                temp = my_str.substring(i,i+n);
-            }
-            answer[i/n] = temp;
+            // if(i+n >= len){
+            //     temp = my_str.substring(i,len);
+            // }
+            // else{
+            //     temp = my_str.substring(i,i+n);
+            // }
+            // answer[i/n] = temp;
+            
+            // Math.min() 메서드 사용
+            answer[i/n] = my_str.substring(i,Math.min(i+n,len));
         }
         return answer;
 
