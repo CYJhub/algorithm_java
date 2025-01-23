@@ -4,7 +4,7 @@
 
 ### 성능 요약
 
-메모리: 94.8 MB, 시간: 0.25 ms
+메모리: 86.7 MB, 시간: 0.34 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 01월 07일 12:42:33
+2025년 01월 23일 18:13:48
 
 ### 문제 설명
 
@@ -66,53 +66,125 @@
 <ul>
 <li>예제 1번의 <code>n</code>의 값은 3으로 다음과 같이 2차원 배열을 채울 수 있습니다.</li>
 </ul>
-
-<p>|i \ j|0|1|2|</p>
-
-<p>|---|---|---|---|</p>
-
-<p>|0|1|0|0|</p>
-
-<p>|1|0|1|0|</p>
-
-<p>|2|0|0|1|</p>
-<div class="highlight"><pre class="codehilite"><code>따라서 [[1, 0, 0], [0, 1, 0], [0, 0, 1]]을 return 합니다.
+<table class="table">
+        <thead><tr>
+<th>i \ j</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+</tr>
+</thead>
+        <tbody><tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+      </table><div class="highlight"><pre class="codehilite"><code>따라서 [[1, 0, 0], [0, 1, 0], [0, 0, 1]]을 return 합니다.
 </code></pre></div>
 <p>입출력 예 #2</p>
 
 <ul>
 <li>예제 2번의 <code>n</code>의 값은 6으로 다음과 같이 2차원 배열을 채울 수 있습니다.</li>
 </ul>
-
-<p>|i \ j|0|1|2|3|4|5|</p>
-
-<p>|---|---|---|---|---|---|---|</p>
-
-<p>|0|1|0|0|0|0|0|</p>
-
-<p>|1|0|1|0|0|0|0|</p>
-
-<p>|2|0|0|1|0|0|0|</p>
-
-<p>|3|0|0|0|1|0|0|</p>
-
-<p>|4|0|0|0|0|1|0|</p>
-
-<p>|5|0|0|0|0|0|1|</p>
-<div class="highlight"><pre class="codehilite"><code>따라서 [[1, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 1, 0, 0], [0, 0, 0, 0, 1, 0], [0, 0, 0, 0, 0, 1]]을 return 합니다.
+<table class="table">
+        <thead><tr>
+<th>i \ j</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+        <tbody><tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+      </table><div class="highlight"><pre class="codehilite"><code>따라서 [[1, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 1, 0, 0], [0, 0, 0, 0, 1, 0], [0, 0, 0, 0, 0, 1]]을 return 합니다.
 </code></pre></div>
 <p>입출력 예 #3</p>
 
 <ul>
 <li>예제 1번의 <code>n</code>의 값은 1이고 다음과 같이 2차원 배열을 채울 수 있습니다.</li>
 </ul>
-
-<p>|i \ j|0|</p>
-
-<p>|---|---|</p>
-
-<p>|0|1|</p>
-<div class="highlight"><pre class="codehilite"><code>따라서 [[1]]을 return 합니다.
+<table class="table">
+        <thead><tr>
+<th>i \ j</th>
+<th>0</th>
+</tr>
+</thead>
+        <tbody><tr>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+      </table><div class="highlight"><pre class="codehilite"><code>따라서 [[1]]을 return 합니다.
 </code></pre></div>
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
