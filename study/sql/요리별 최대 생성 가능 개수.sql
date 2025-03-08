@@ -1,5 +1,5 @@
-SELECT f.음식, MIN(COALESCE(FLOOR(i.양 / f.필요한수량), 0)) AS 최대_제작_가능_개수
-FROM 음식 f
-RIGHT OUTER JOIN 재료 i 
-ON f.재료이름 = i.재료이름
-GROUP BY f.음식;
+SELECT f.food, MIN(COALESCE(FLOOR(i.amount / f.required_quantity), 0)) AS max_producible_quantity
+FROM food f
+RIGHT OUTER JOIN ingredients i 
+ON f.ingredient_name = i.ingredient_name
+GROUP BY f.food;
