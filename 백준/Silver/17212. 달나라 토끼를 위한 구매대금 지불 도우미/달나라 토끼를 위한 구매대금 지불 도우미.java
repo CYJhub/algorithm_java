@@ -29,8 +29,7 @@ public class Main {
                 //지금 동전을 뺄 수 있는지 확인 && 그 금액을 만드는 방법이 있었던 경우에만 실행
                 //i-coin이 이미 최솟값으로 만들어져 있다면 i는 coin을 더하면 된다.
                 if(i-coin>=0 && dp[i-coin]!=Integer.MAX_VALUE){
-                    dp[i] = Math.min(dp[i],dp[i-coin]+1);//근데 여기서 dp[i]는 항상 max값 아닌가?
-                    //아니지 coin을 돌면서 만약 앞에 있는 동전으로 최솟값을 만들 수 있다면 max가 아니겠지.
+                    dp[i] = Math.min(dp[i],dp[i-coin]+1);
                 }
             }
         }
