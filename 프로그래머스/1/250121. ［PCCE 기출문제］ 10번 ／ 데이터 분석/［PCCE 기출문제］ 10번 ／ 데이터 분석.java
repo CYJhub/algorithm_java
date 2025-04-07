@@ -25,8 +25,7 @@ class Solution {
         else if (sort_by.equals("maximum")) num = 2;
         else if (sort_by.equals("remain")) num = 3;
 
-        // num 값 바꾸지 않았으므로 effectively final → 람다에서 사용 가능!
-        result.sort((a, b) -> Integer.compare(a[num], b[num]));
+        Collections.sort(result,(o1,o2)->Integer.compare(o1[num],o2[num]));
 
         // 리스트를 배열로 변환
         int[][] answer = new int[result.size()][4];
