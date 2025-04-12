@@ -6,15 +6,19 @@ class Solution {
         Arrays.sort(people);//오름차순 정렬
         int left = 0;
         int right = people.length-1;
+        int count = 0;
         
         while(left<=right){
             int min = people[left];
             int max = people[right];
+            int weight = max;
+            count =1;
             
-            if(min+max<=limit){
-                left++;
+            while(left<=right && count<2 && weight+people[left]<=limit){
+                count++;
+                weight += people[left++];
             }
-            right--;//리밋보다 커져도 우선 큰 사람은 들어감
+            right--;
             answer++;
             
         }
