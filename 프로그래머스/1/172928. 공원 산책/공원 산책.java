@@ -1,76 +1,72 @@
 class Solution {
     public int[] solution(String[] park, String[] routes) {
         int[]  answer = new int[2];
-        int row = park.length;//세로
-        int col = park[0].length();//가로
         
-        char[][] grid = new char[row][col];//공원 격자
+        int[][] directions = {{-1,0},{1,0},{0,-1},{0,1}};//N S W E
         
-        int curRow = -1;
-        int curCol = -1;
+        int R = park.length;
+        int C = park[0].length();
+        //시작 지점
+        int curx= -1;
+        int cury= -1;
         
-        for(int i=0;i<row;i++){
-            for(int j=0;j<col;j++){
-                grid[i][j] = park[i].charAt(j);
-                if(park[i].charAt(j)=='S'){//시작점 확인
-                    curRow = i;
-                    curCol = j;
+        for(int i=0;i<R;i++){
+            for(int j=0;j<C;j++){
+                if(park[i].charAt(j)=='S'){
+                    curx = i;
+                    cury = j;
+                    break;
+                    
                 }
             }
-        }//격자 채우기
-        
-        
+        }
         for(String route:routes){
-
+            String[] arr = route.split(" ");
+            String dir = arr[0];
+            int num = Integer.parseInt(arr[1]);
             
-            String[] str = route.split(" ");
-            String op = str[0];
-            int n = Integer.parseInt(str[1]);
-            
-            int dx=0;
-            int dy=0;
-            
-            if(op.equals("N")){
-                dx=-1;
-            }else if(op.equals("S")){
-                dx=1;
-            }
-            else if(op.equals("W")){
-                dy=-1;
-            }else if(op.equals("E")){
-                dy=1;
-            }
-            
-            int tempRow = curRow;
-            int tempCol = curCol;
+            int tempx = curx;
+            int tempy = cury;
             boolean isCheck = true;
+
+            int idx = -1;
+            if(dir.equals("N")){
+                idx=0;
+            }else if(dir.equals("S")){
+                idx=1;
+            }
+            else if(dir.equals("W")){
+                idx=2;
+            }
+            else if(dir.equals("E")){
+                idx=3;
+            }
             
-            for(int i=0;i<n;i++){
-                tempRow += dx;
-                tempCol += dy;
+            for(int i=0;i<num;i++){
+                tempx += directions[idx][0];
+                tempy += directions[idx][1];
                 
-                if(!isRange(tempRow,tempCol,row,col) || grid[tempRow][tempCol]=='X'){
+                if(!isRange(tempx,tempy,R,C) || park[tempx].charAt(tempy)=='X'){
                     isCheck = false;
+                    break;
                 }
+                
             }
             if(isCheck){
-                curRow = tempRow;
-                curCol = tempCol;
-                
-            }
+                    curx = tempx;
+                    cury = tempy;
 
-  
+                }
             
         }
-        answer[0] = curRow;
-        answer[1] = curCol;
+        answer[0]=curx;
+        answer[1]=cury;
         
-       
         return answer;
     }
-    private static boolean isRange(int x,int y,int row, int col){
-        return (x>=0 && x<row && y>=0 && y<col);
-        
+    public static boolean isRange(int x,int y,int R, int C){
+        return x>=0 && x<R && y>=0 && y<C ;
     }
+        
     
 }
