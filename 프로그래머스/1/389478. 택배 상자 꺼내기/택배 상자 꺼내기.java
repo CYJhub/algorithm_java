@@ -1,45 +1,54 @@
 class Solution {
     public int solution(int n, int w, int num) {
         int answer = 0;
-        int row = (n+w-1)/w;
-        int[][] boxes = new int[row][w];//박스 2차원 배열 생성
+        int row = (n+w-1)/w;//올림 수=행
+        int col = w;//열
         
-        int q = row-1;
-        int r = n%w;
-        int boxnum=1;
-        for(int i=q;i>=0;i--){
-            if((q-i) % 2 == 0){
-                for(int j=0;j<w&&boxnum<=n;j++){
-                    boxes[i][j] = boxnum++;
+        int[][] boxes = new int[row][col];
+        
+
+        int k = 1;
+        
+        for(int i=row-1;i>=0;i--){//밑에서 부터 쌍아햐 하므로
+            for(int j=0;j<col;j++){//좌우마다 방향이 다름
+                if(row%2==0){
+                    if(i%2!=0){
+                        boxes[i][j] = k++;
+                    }else{
+                        boxes[i][col-j-1] = k++;
+                    }
+                }else{
+                    if(i%2==0){
+                        boxes[i][j] = k++;
+                    }else{
+                        boxes[i][col-j-1] = k++;
+                    }
                 }
-            }else{
-                for(int j=w-1;j>=0&&boxnum<=n;j--){
-                    boxes[i][j] = boxnum++;
-                }
-            }
-        }
-        //num이 [i][j]에 있는지 알아야 한다.
-        //row - (num-1/w) -1 -> 0부터 시작하므로 1 빼줌
-        //col
-        int hid = -1;
-        int wid = -1;
-        for(int i=0;i<row;i++){
-            for(int j=0;j<w;j++){
-                if(boxes[i][j]==num){
-                    hid = i;
-                    wid = j;
+                if(n<k){
                     break;
                 }
             }
-        }
-        // int hid = row - ((num-1)/w) -1;
-        // int wid = w-(num/w)-1;
-        for(int i=0;i<=hid;i++){
-            if(boxes[i][wid]!=0){
-                answer++;
+            if(n<k){
+                break;
             }
         }
 
+        int x=-1;
+        int y=-1;
+        
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                if(boxes[i][j]==num){
+                    x=i;
+                    y=j;
+                }
+            }
+        }
+        for(int i=0;i<=x;i++){
+            if(boxes[i][y]!=0){
+                answer++;
+            }
+        }
         return answer;
     }
 }
