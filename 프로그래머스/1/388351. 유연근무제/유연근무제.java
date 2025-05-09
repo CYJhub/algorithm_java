@@ -1,39 +1,40 @@
 class Solution {
     public int solution(int[] schedules, int[][] timelogs, int startday) {
         int answer = 0;
-        int stday = startday-1;//%7을 사용하기 위해서
-        int num = schedules.length;//직원들의 수
-        
-        int hopetime;//출근 희망 시각
-        int plus10;//+10한 시각
-        boolean flag = true;
-        int cnt=0;
-        for(int i=0;i<num;i++){
-            int curday = stday;
-            hopetime = schedules[i];
-            plus10 = schedules[i]+10;//이걸 이렇게 그냥 10하면 안됨
-            if(plus10 % 100 >= 60){
-                plus10 += 40;
+        for(int i=0;i<timelogs.length;i++){
+            int hour = schedules[i]/100;
+            int min = schedules[i]%100;
+            min+=10;
+            if(min>=60){
+                hour += 1;
+                min -= 60;
             }
+            int hope_time = hour*100 + min;
+            int st = startday-1;//월요일은 0부터 시작
+            
+            boolean isCheck = true;
             for(int j=0;j<7;j++){
-                if(curday%7 == 5 || curday%7 ==6){
-                    curday++;
-                    continue;
+                st %= 7;
+                if(st!=5 && st!=6){
+                    if(timelogs[i][j] > hope_time){
+                        isCheck = false;//늦게 출근하면 false
+                        break;
+                    }
                 }
-                if(timelogs[i][j]>plus10){//보다 늦게 출근하면
-                    flag = false;
-                    System.out.println(schedules[i]);
-                    break;
-                }
-                curday++;
-            }
-            if(flag){
-                
-                cnt++;
-            }
-            flag = true;
-        }
+                st++;
 
-        return cnt;
+            }
+            if(isCheck){
+                answer++;
+            }
+        }
+        
+       return answer;
     }
+    
 }
+// 각자 설정한 출근 희망 시각에 늦지 않고 출근한
+// 출근 희망 시각 + 10분
+// 단, 토일은 상관 없음
+// 시*100+분
+// 1은 월요일, 2는 화요일, 3은 수요일, 4는 목요일, 5는 금요일, 6은 토요일, 7은 일요일
