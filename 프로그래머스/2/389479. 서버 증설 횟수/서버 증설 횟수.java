@@ -37,7 +37,6 @@ class Solution {
         int sum=0;
         for(int i=0;i<24;i++){
             sum+=count[i];
-            System.out.println(count[i]);
         }
         return sum;
     }
