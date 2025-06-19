@@ -1,13 +1,14 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.StringTokenizer;
 
 public class Main {
     static int N,M;
     static int[][] arr;
     static boolean[][] visited;
     static int[][] directions = {{0,1},{1,0},{0,-1},{-1,0}};
+    static int count;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -19,63 +20,44 @@ public class Main {
         arr = new int[N][M];
         visited = new boolean[N][M];
 
-        for (int i = 0; i < K; i++) {
+        for(int i=0;i<K;i++){
             st = new StringTokenizer(br.readLine());
-            int row = Integer.parseInt(st.nextToken());
-            int col = Integer.parseInt(st.nextToken());
-
-            arr[row-1][col-1] = 1;//음식물 표시
-
+            int x = Integer.parseInt(st.nextToken());
+            int y = Integer.parseInt(st.nextToken());
+            arr[x-1][y-1] = 1;
         }
         int max = Integer.MIN_VALUE;
-
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < M; j++) {
+        for(int i=0;i<N;i++){
+            for(int j=0;j<M;j++){
                 if(arr[i][j]==1 && !visited[i][j]){
-                    max  = Math.max(max,bfs(i,j));
+                    count = 1;
+                    dfs(i,j);
+                    max = Math.max(max,count);
                 }
             }
         }
         System.out.println(max);
 
     }
-    private static int bfs(int row, int col) {
-        Queue<Point> q = new LinkedList<>();
-        q.add(new Point(row,col));
-        int count = 1;
-        visited[row][col] = true;//방문 표시
+    private static int dfs(int x, int y) {
+        visited[x][y] = true;
 
-        while(!q.isEmpty()){
-            Point p = q.poll();
-            int x = p.x;
-            int y = p.y;
+        for(int[] d : directions){
+            int nx=x+d[0];
+            int ny=y+d[1];
 
-            for(int[] d : directions){
-                int nx = x+d[0];
-                int ny = y+d[1];
-
-                if(isRange(nx,ny) && arr[nx][ny]==1 && !visited[nx][ny]){
+            if(isRange(nx,ny)){
+                if(!visited[nx][ny] && arr[nx][ny]==1){
                     count++;
-                    visited[nx][ny] = true;
-                    q.add(new Point(nx,ny));
+                    dfs(nx,ny);
                 }
             }
-
         }
-
 
         return count;
-    }
-    public static class Point{
-        int x;
-        int y;
 
-        public Point(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
     }
-    private static boolean isRange(int row, int col) {
-        return row >= 0 && row < N && col >= 0 && col < M;
+    private static boolean isRange(int i, int j) {
+        return i>=0 && i<N && j>=0 && j<M;
     }
 }
